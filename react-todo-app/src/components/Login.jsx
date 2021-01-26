@@ -1,6 +1,8 @@
-import React, {Component, useState} from 'react'
+import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
 function Login(props) {
+    let history = useHistory()
     //I use state to change the value's of the username and password which will later be implimented to create a functional login
     const [username, setUsername] = useState("Kevin");
     const [password, setPassword] = useState("todoapp");
@@ -17,8 +19,9 @@ function Login(props) {
         }
     };
 
-    const loginClicked = () => {
+    const loginClicked = (props) => {
         if(username === 'Kevin' && password === 'todoapp'){
+            history.push("/welcome")
             setHasLoginFailed(false)
             setShowSuccessMessage(true)
             console.log('Success')
@@ -30,27 +33,13 @@ function Login(props) {
     }
     return (
         <>
-            <ShowInvalidCredentials hasLoginFailed={hasLoginFailed} />
-            <ShowLoginSuccessMesssage showSuccessMessage={showSuccessMessage} />
+            {hasLoginFailed && <div>Invalid Credentials</div>}
+            {showSuccessMessage && <div>Login Successful</div>}
            <span>Username:<input type="text" name="username" value={username} onChange={handleChange}></input></span>
            <span>Password:<input type="password" name="password" value={password} onChange={handleChange}></input></span>
            <button onClick={loginClicked}>Login</button> 
         </>
     )
-}
-
-function ShowInvalidCredentials(props){
-    if(props.hasLoginFailed){
-        return <div>Invalid Credentials</div>
-    }
-    return null
-}
-
-function ShowLoginSuccessMesssage(props){
-    if(props.showSuccessMessage){
-        return <div>Login Successful</div>
-    }
-    return null
 }
 
 export default Login
