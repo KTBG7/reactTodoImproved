@@ -21,7 +21,7 @@ function Login(props) {
 
     const loginClicked = (props) => {
         if(username === 'Kevin' && password === 'todoapp'){
-            history.push("/welcome")
+            history.push(`/welcome/${username}`)
             setHasLoginFailed(false)
             setShowSuccessMessage(true)
             console.log('Success')
