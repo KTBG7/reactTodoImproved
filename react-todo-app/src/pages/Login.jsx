@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import {registerSuccessfulLogin} from '../components/AuthenticationService.js';
 
 function Login(props) {
     let history = useHistory()
@@ -21,6 +22,7 @@ function Login(props) {
 
     const loginClicked = (props) => {
         if(username === 'Kevin' && password === 'todoapp'){
+            registerSuccessfulLogin(username, password);
             history.push(`/welcome/${username}`)
             setHasLoginFailed(false)
             setShowSuccessMessage(true)
@@ -33,11 +35,11 @@ function Login(props) {
     }
     return (
         <>
-            {hasLoginFailed && <div>Invalid Credentials</div>}
+            {hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
             {showSuccessMessage && <div>Login Successful</div>}
            <span>Username:<input type="text" name="username" value={username} onChange={handleChange}></input></span>
            <span>Password:<input type="password" name="password" value={password} onChange={handleChange}></input></span>
-           <button onClick={loginClicked}>Login</button> 
+           <button className="btn btn-success" onClick={loginClicked}>Login</button> 
         </>
     )
 }

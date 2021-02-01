@@ -5,8 +5,10 @@ import Welcome from './Welcome'
 import ErrorComponent from '../components/ErrorComponent'
 import ListTodosComponent from '../components/ListTodosComponent'
 import HeaderComponent from '../components/HeaderComponent'
+import '../components/AuthenticationService.js'
 import FooterComponent from '../components/FooterComponent'
 import Logout from './Logout'
+import AuthenticatedRoute from '../components/AuthenticatedRoute'
 
 function TodoApp() {
     return (
@@ -18,9 +20,9 @@ function TodoApp() {
                 <Switch>
                 <Route path="/"  exact component={Login}></Route>
                 <Route path="/login" component={Login}></Route>
-                <Route path="/logout" component={Logout}></Route>
-                <Route path="/welcome/:name" component={Welcome}></Route>
-                <Route path="/todos" component={ListTodosComponent}></Route>
+                <AuthenticatedRoute path="/logout" component={Logout}></AuthenticatedRoute>
+                <AuthenticatedRoute path="/welcome/:name" component={Welcome}></AuthenticatedRoute>
+                <AuthenticatedRoute path="/todos" component={ListTodosComponent}></AuthenticatedRoute>
                 <Route component={ErrorComponent}></Route>
                 </Switch>
                 <FooterComponent />

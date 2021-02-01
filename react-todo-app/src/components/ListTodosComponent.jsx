@@ -15,10 +15,10 @@ function ListTodosComponent() {
       return (
         <div>
           <h1>Todo List</h1>
-          <table style={{margin: "auto"}}>
+          <div className="container">
+          <table className="table">
               <thead>
                   <tr>
-                      <th>id</th>
                       <th>description</th>
                       <th>Completed</th>
                       <th>Target Date</th>
@@ -27,7 +27,6 @@ function ListTodosComponent() {
               <tbody>
                   {todos.map(todo =>
                   <tr key={todo.id}>
-                      <td>{todo.id}</td>
                       <td>{todo.desc}</td>
                       <td>{todo.completed}</td>
                       <td>{todo.targetDate}</td>
@@ -35,6 +34,7 @@ function ListTodosComponent() {
                   )}
               </tbody>
           </table>
+          </div>
         </div>
       );
 }

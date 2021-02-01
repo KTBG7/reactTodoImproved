@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 
 function Welcome(props) {
     return (
-        <div>
-            Welcome, {props.match.params.name} You can see your todos here <button><Link to='/todos'>Todos</Link></button>
-        </div>
+        <>
+            <h1>Welcome</h1>
+            <div className="container">
+            {props.match.params.name} You can see your todos <Link to='/todos'>here</Link>
+            </div>
+        </>
     )
 }
 
