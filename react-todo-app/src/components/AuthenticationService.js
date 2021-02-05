@@ -16,4 +16,10 @@ function isUserLoggedIn(){
     }
 }
 
-export {registerSuccessfulLogin, logout, isUserLoggedIn}
+const getLoggedInUserName= () => {
+    let user = sessionStorage.getItem('authenticatedUser')
+    if(user === null) return ''
+    return user
+}
+
+export {registerSuccessfulLogin, logout, isUserLoggedIn, getLoggedInUserName}
